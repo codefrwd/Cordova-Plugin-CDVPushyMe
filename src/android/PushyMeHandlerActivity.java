@@ -23,6 +23,7 @@ public class PushyMeHandlerActivity extends Activity
 	{
 		super.onCreate(savedInstanceState);
 		Log.v(TAG, "onCreate");
+		forceMainActivityReload();
     }
   /**
 	 * Forces the main activity to re-launch if it's unloaded.
