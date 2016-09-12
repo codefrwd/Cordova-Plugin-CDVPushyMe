@@ -8,6 +8,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -56,7 +57,10 @@ import java.util.Iterator;
         NotificationManager mNotificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         String appName = getAppName(context);
 
-        Intent notificationIntent = new Intent(context, PushyMeHandlerActivity.class);
+        PackageManager pm = context.getPackageManager();
+        Intent notificationIntent = pm.getLaunchIntentForPackage(context.getPackageName());
+
+//        Intent notificationIntent = new Intent(context, PushyMeHandlerActivity.class);
         notificationIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         notificationIntent.putExtra("pushBundle", extras);
 
